@@ -11,8 +11,6 @@ import { Score } from '@models';
 })
 export class RankingService extends BffClientService {
 
-  private eventSource: any = window['EventSource'];
-
   constructor(
     protected http: HttpClient,
     private ngZone: NgZone
@@ -29,18 +27,28 @@ export class RankingService extends BffClientService {
   }
 
   // Lista de Datos por eventos
- /*  public getRankingBoardEvent(): Observable<any> {
-    const url = `${this.urlBase}${environment.RANKING_BOARD}`;
+  public getRankingBoardEvent(): Observable<any> {
+    const url = `${this.urlBase}${environment.RANKING_BOARD_EVENT}`;
     return new Observable<any>(obs => {
-      const eventSource = new this.eventSource(url);
+      const eventSource = this.getEventSource(url);
+
       eventSource.onmessage = event => {
         const data = JSON.parse(event.data);
-        this.ngZone.run(() => obs.next(data));  // $apply external (window.EventSource) event data
+        this.ngZone.run(() => obs.next(data));
       };
-      eventSource.onerror = (error) => obs.error(error);
-      return () => eventSource.close();          // close connection when observer unsubscribe
+
+      eventSource.onerror = error => {
+        obs.error(error);
+      };
+
+      return () => eventSource.close();
     });
-  } */
+
+  }
+
+  private getEventSource(url: string): EventSource {
+    return new EventSource(url);
+  }
 
   public updateScore(body: Score): Observable<DataResponse> {
     const url = `${this.urlBase}${environment.SCORE}`;

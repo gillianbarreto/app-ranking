@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { RankingService } from '@services';
 import { UnsubscribeOnDestroy } from '@shared/utils';
+import { RankingBoardComponent } from './../ranking-board/ranking-board.component';
 
 @Component({
   selector: 'app-score',
@@ -34,9 +35,9 @@ export class ScoreComponent extends UnsubscribeOnDestroy {
       this.rankingService.updateScore(this.formScore.value).subscribe(
         () => {
           this.showMessage('success', 'Datos actualizados correctamente');
+          RankingBoardComponent.updateView.next();
         },
         (error) => {
-          console.log('*** Error ****', error);
           this.showMessage('danger', 'Error al actualizar el puntaje');
         }
       );
