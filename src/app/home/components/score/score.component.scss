@@ -1,0 +1,9 @@
+.card {
+  border-radius: 2rem;
+  img {
+    max-width: 30%;
+    @media (max-width: 480px) {
+      max-width: 50%;
+    }
+  }
+}

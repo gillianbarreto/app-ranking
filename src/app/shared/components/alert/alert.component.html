@@ -1,0 +1,10 @@
+<div
+  *ngIf="message"
+  id="showAlert"
+  class="alert alert-dismissible animate__animated animate__bounceIn {{ this.class }}"
+  role="alert">
+  {{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span class="pt-1 pr-1" aria-hidden="true">&times;</span>
+  </button>
+</div>

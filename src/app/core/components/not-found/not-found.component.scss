@@ -1,0 +1,9 @@
+img {
+  width: 80%;
+}
+.h1 {
+  @media (max-width: 480px) {
+    font-size: 2rem;
+    line-height: 1;
+  }
+}

@@ -1,0 +1,27 @@
+<div class="card my-md-5">
+  <div class="text-center mt-2">
+    <img class="card-img-top" src="assets/img/ranking.png" alt="Imagen jugador">
+  </div>
+  <div class="card-body w-80 w-md-70">
+    <table class="table table-striped">
+      <thead>
+        <tr class="text-center">
+          <th scope="col">Player</th>
+          <th scope="col">Score</th>
+          <th scope="col">Rank</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of ranking">
+          <td>{{ item.nick }}</td>
+          <td class="text-center">{{ item.score }}</td>
+          <td class="text-center">{{ item.rank }}</td>
+        </tr>
+
+        <tr *ngIf="!ranking?.length">
+          <td colspan="3" class="text-center">La tabla de ranking está vacía</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+.modal-header {
+  border-bottom: none;
+  padding: 0 1rem;
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+}
+.modal-footer {
+  border-top: none;
+}

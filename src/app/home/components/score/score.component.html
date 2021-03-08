@@ -1,0 +1,34 @@
+<div class="card my-md-5">
+  <div class="text-center mt-5">
+    <img class="card-img-top" src="assets/img/player.png" alt="Imagen jugador">
+  </div>
+  <div class="card-body w-80 w-md-70">
+    <form novalidate [formGroup]="formScore">
+      <div class="form-group">
+        <label for="nick">Nick</label>
+        <input id="nick" type="text" formControlName="nick" class="form-control" maxlength="10">
+        <app-form-errors [control]='formScore.controls["nick"]'></app-form-errors>
+      </div>
+      <div class="form-group">
+        <label for="score">Score</label>
+        <input id="score" type="number" formControlName="score" class="form-control" step="10">
+        <app-form-errors [control]='formScore.controls["score"]'></app-form-errors>
+      </div>
+      <div class="text-center py-3">
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="!formScore.valid || showSpinner"
+          (click)="updateScore()">
+          <span *ngIf="showSpinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          Guardar Puntaje
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<app-alert *ngIf="messageAlert"
+  [message]="messageAlert"
+  [class]="classAlert" >
+</app-alert>
